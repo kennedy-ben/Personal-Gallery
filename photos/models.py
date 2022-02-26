@@ -100,3 +100,4 @@ class Image(models.Model):
     def filter_by_location(cls, id):
        images = Image.objects.filter(location_id=id)
        return images
+       
