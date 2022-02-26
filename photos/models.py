@@ -1,5 +1,3 @@
-
-  
 from django.db import models
 import datetime as dt
 
@@ -68,7 +66,7 @@ class Image(models.Model):
     description = models.TextField(max_length =30)
     image = models.ImageField(upload_to = 'photos/', default='No image')
     location = models.ForeignKey(Location)
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category,models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add=True, null=True) 
 
     class Meta:
@@ -95,7 +93,7 @@ class Image(models.Model):
     @classmethod
     def search_by_category(cls,search_term):
         photo = cls.objects.filter(category__photo_category__icontains=search_term)
-        return photo_category        
+        return photo_category       
     @classmethod
     def filter_by_location(cls, id):
        images = Image.objects.filter(location_id=id)
