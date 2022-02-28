@@ -7,30 +7,30 @@ class PhotographerTestClass(TestCase):
 
     # Set up method
     def setUp(self):
-        self.kenny= Photographer(first_name = 'kenny', last_name ='Ben')
+        self.Kenedy= Photographer(first_name = 'Kenedy', last_name ='Makuani')
     # Testing  instance
     def test_instance(self):
-        self.assertTrue(isinstance(self.kenny,Photographer))   
+        self.assertTrue(isinstance(self.Kenedy,Photographer))   
     # Testing Save Method
     def test_save_method(self):
-        self.kenny.save_photographer()
+        self.Kenedy.save_photographer()
         photographers = Photographer.objects.all()
         self.assertTrue(len(photographers) > 0) 
     def test_delete_method(self):
-        self.kenny.save_photographer()
-        self.kenny.delete_photographer()
+        self.Kenedy.save_photographer()
+        self.Kenedy.delete_photographer()
         photographers = Photographer.objects.all()
         self.assertTrue(len(photographers) == 0) 
     def test_display_method(self):
-        self.kenny.save_photographer()
-        self.kenny.display_photographers()
+        self.Kenedy.save_photographer()
+        self.Kenedy.display_photographers()
         photographers = Photographer.objects.all()
         self.assertTrue(len(photographers) > 0) 
     def test_update_method(self):
-        self.kenny.save_photographer()
-        new_photographer = Photographer.objects.filter(first_name="kenny").update(first_name="kenny")
-        photographers=Photographer.objects.get(first_name="kelcy")
-        self.assertTrue(photographers.first_name,"kelcy")           
+        self.Kenedy.save_photographer()
+        new_photographer = Photographer.objects.filter(first_name="Kenedy").update(first_name="Kenedy")
+        photographers=Photographer.objects.get(first_name="kenedy")
+        self.assertTrue(photographers.first_name,"Kenedy")           
 
 class LocationTestClass(TestCase):
     def setUp(self):
