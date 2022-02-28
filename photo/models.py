@@ -1,4 +1,7 @@
 from django.db import models
+
+# Create your models here.
+from django.db import models
 import datetime as dt
 
 # Create your models here.
@@ -62,11 +65,11 @@ class Category(models.Model):
 
 class Image(models.Model):
     title = models.CharField(max_length =30)
-    photographer = models.ForeignKey(Photographer)
+    photographer = models.ForeignKey(Photographer, on_delete=models.CASCADE)
     description = models.TextField(max_length =30)
     image = models.ImageField(upload_to = 'photos/', default='No image')
-    location = models.ForeignKey(Location)
-    category = models.ForeignKey(Category,models.CASCADE)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category,on_delete=models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add=True, null=True) 
 
     class Meta:
@@ -93,7 +96,7 @@ class Image(models.Model):
     @classmethod
     def search_by_category(cls,search_term):
         photo = cls.objects.filter(category__photo_category__icontains=search_term)
-        return photo_category       
+        return photo       
     @classmethod
     def filter_by_location(cls, id):
        images = Image.objects.filter(location_id=id)
