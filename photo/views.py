@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404# responsible for returning a response to a user
 import datetime as dt
 from .models import Image,Location,Photographer,Category
+from django.core.exceptions import ObjectDoesNotExist
 
 
 # Create your views here.
@@ -26,7 +27,7 @@ def search_results(request):
 def image(request,image_id):
     try:
         image = Image.objects.get(id = image_id)
-    except DoesNotExist:
+    except ObjectDoesNotExist:
         raise Http404()
     return render(request,"all-photo/image.html", {"image":image})
 def filter_by_location(request,location_id):
