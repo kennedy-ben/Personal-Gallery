@@ -3,7 +3,7 @@
 {{ blocksuper }}
 <body>
 {% for photo_item in images %}
-
+  
 <h1>Welcome To Fashion GAllery</h1>
 <br>
 <div class="container-fluid" id="container">   
@@ -13,7 +13,7 @@
     <div class="col-md-4 col-md-4 col-md-4">
       <!-- <h1 class="">{{photo_item}}</h1> -->
       <div class="well">
-      <img src="{{./gallery/media_photos}}" style="width: 100%" class="image" data-toggle="modal" data-target="#exampleModal{{photo_item.id}}"class="img-responsive" alt="Image" style="max-width:300px;">
+      <img src="{% media '/photos/cup.jpg' %}" style="width: 100%" class="image" data-toggle="modal" data-target="#exampleModal{{photo_item.id}}"class="img-responsive" alt="Image" style="max-width:300px;">
       </div>
     </div>
                   </div>
@@ -34,14 +34,14 @@ aria-hidden="true">
         <span aria-hidden="true">&times;</span>
      </div>
     <div class="modal-body">
-      <img src="{{media/media_photos}}" class="img-fluid" data-toggle="modal" data-target="#exampleModal{{image.id}}" style="width: 100%;">
+      <img src="{{photo_item.image.url}}" class="img-fluid" data-toggle="modal" data-target="#exampleModal{{image.id}}" style="width: 100%;">
       <p> {{photo_item.description }}</p><label for="location"> Image location :{{photo_item.location }}</label>
 
 
     </div>
     <div class="modal-footer">
-      <input class="form-control" type="text" value="http://127.0.0.1:8000{{media_photos}}" id="this link here-{{photo_item.id}}">
-      <a onclick="copyLink({{photos_item.id}})"><button type="button" class="btn btn-outline-secondary my-2 my-sm-0 link-btn">Copy
+      <input class="form-control" type="text" value="http://127.0.0.1:8000{{media_photos.image.url}}" id="this link here-{{photo_item.id}}">
+      <!-- <a onclick="copyLink({{photos_item.id}})"><button type="button" class="btn btn-outline-secondary my-2 my-sm-0 link-btn">Copy -->
           image Link</button></a>
 
     </div>
