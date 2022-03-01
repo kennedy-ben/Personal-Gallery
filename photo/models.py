@@ -1,14 +1,32 @@
 from django.db import models
-
-# Create your models here.
+from django.shortcuts import render
+# from .models import photos
 from django.db import models
 import datetime as dt
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
+
+def index(request):
+    return render(request, 'index.html')
+def index(request):
+    # imports photos and save it in database
+    photo = Photos.objects.all()
+    # adding context 
+    ctx = {'photo':photo}
+    return render(request, 'index.html', ctx)
+
+
+class Photos(models.Model):
+    title = models.CharField(max_length=100)
+    image = CloudinaryField('image')
+
+
+
 class Photographer(models.Model):
     first_name = models.CharField(max_length =30)
     last_name = models.CharField(max_length =30)
-    email = models.EmailField()
+    
     
     def __str__(self):
         return self.first_name
