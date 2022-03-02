@@ -8,9 +8,9 @@
 </head>
 <body>
   <h2>Fashion Gallery</h2>
-  {% for images in photos %}
-  <h2>{{image.title}}</h2>
-  <img src="{{image.image.url}}" alt="fashion">
+  {% for image in photo %}
+        <h2>{{img.title}}</h2>
+            <img src="{{image.image.url}}" alt="Fashion">
   {% endfor %}
 </body>
 </html>
