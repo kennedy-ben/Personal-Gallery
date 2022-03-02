@@ -7,6 +7,10 @@
   <title>FAshion Gallery</title>
 </head>
 <body>
-  <img src="" alt="cup">
+  <h2>Fashion Gallery</h2>
+  {% for images in photos %}
+  <h2>{{image.title}}</h2>
+  <img src="{{image.image.url}}" alt="fashion">
+  {% endfor %}
 </body>
 </html>

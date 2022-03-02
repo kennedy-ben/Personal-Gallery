@@ -9,8 +9,9 @@ from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 def fashion(request):
     images = Image.objects.all()
-    print(images)
-    return render(request, 'fashion.html',{'images':images})
+    ctx = image.object.all()
+    return render(request, 'fashion.html', ctx)
+    
 
 def search_results(request):
     
