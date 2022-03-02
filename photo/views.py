@@ -9,7 +9,7 @@ from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 def fashion(request):
     images = Image.objects.all()
-    ctx = {'images' :images}
+    ctx = {'images':images}
     return render(request, 'fashion.html', ctx)
     
 

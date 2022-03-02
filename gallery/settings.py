@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from ensurepip import bootstrap
 import os
 from pathlib import Path
 import cloudinary
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'photo',
     'cloudinary',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
