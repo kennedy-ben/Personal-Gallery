@@ -7,9 +7,9 @@
                 <div id="front" class="zoom">
                   <div class="overlay">
     <div class="col-md-4 col-md-4 col-md-4">
-      <!-- <h1 class="">{{media/photo}}</h1> -->
+      <!-- <h1 class="">{{photo_item}}</h1> -->
       <div class="well">
-      <img src="{{media/photo.image.url}}" style="width: 100%" class="image" data-toggle="modal" data-target="#exampleModal{{photo_item.id}}"class="img-responsive" alt="Image" style="max-width:300px;">
+      <img src="{{photo_item.image.url}}" style="width: 100%" class="image" data-toggle="modal" data-target="#exampleModal{{photo_item.id}}"class="img-responsive" alt="Image" style="max-width:300px;">
       </div>
     </div>
                   </div>
@@ -37,7 +37,7 @@ aria-hidden="true">
     </div>
     <div class="modal-footer">
       <input class="form-control" type="text" value="http://127.0.0.1:8000{{photo_item.image.url}}" id="thislinkhere-{{photo_item.id}}">
-      <!-- <a onclick="copyLink({{photo_item.id}})"><button type="button" class="btn btn-outline-secondary my-2 my-sm-0 link-btn">Copy -->
+      <a onclick="copyLink({{photo_item.id}})"><button type="button" class="btn btn-outline-secondary my-2 my-sm-0 link-btn">Copy
           image Link</button></a>
 
     </div>
