@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
@@ -22,7 +20,6 @@ from decouple import config,Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -86,26 +83,27 @@ WSGI_APPLICATION = 'gallery.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-
-
-
-DATABASES = {
+if config('MODE')=="dev":
+ DATABASES = {
     'default': {
-      'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gallery',
-        'USER': 'kennedy',
-    'PASSWORD': 'faith9090',
+      'ENGINE': 'django.db.backends.postgresql_pyscopg2',
+        'NAME': config('gallery'),
+        'USER': config('kennedy'),
+    'PASSWORD': config('faith9090'),
+        'HOST':config('DB_HOST'),
+        'PORT':'',
     }
 }
 
 else:
-DATABASES = {
+ DATABASES = {
     'default': dj_database_url.config(
-        default=config('DATABASE_URL')
+     default=config('DATABASE_URL')
     )
 }
 
@@ -149,15 +147,24 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-django_heroku.settings(locals())
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+django_heroku.settings(locals())
+
 
 cloudinary.config(
     cloud_name = "ken-ken7", 
