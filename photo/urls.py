@@ -11,10 +11,10 @@ urlpatterns=[
     re_path(r'location/(\d+)',views.filter_by_location,name='location')
 ]
 
-# urlpatterns=[
-#     path('admin/', admin.site.urls),
-#     path('views', views.index, name='index'),
-# ]
+urlpatterns=[
+    path('admin/', admin.site.urls),
+    path('views', views.index, name='index'),
+]
 
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

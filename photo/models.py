@@ -1,4 +1,3 @@
-from django.db import models
 from django.shortcuts import render
 # from .models import photos
 from django.db import models
